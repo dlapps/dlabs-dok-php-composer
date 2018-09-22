@@ -3,14 +3,10 @@ FROM debian:latest
 # Noninteractive installs
 RUN apt-get clean && \
     apt-get update && \
-    apt-get install -y locales && \
-    echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
-    locale-gen en_US.UTF-8
+    echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 # System environment setup
-ENV LANG=en_US.UTF-8 \
-    LC_ALL=en_US.UTF-8 \
-    HOME=/root \
+ENV HOME=/root \
     DEBIAN_FRONTEND=noninteractive
 
 # Configure common tools
